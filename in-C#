@@ -253,3 +253,9 @@ Date.prototype.addHours = function (hours: number): Date {
   date.setTime(date.getTime() + hours * 60 * 60 * 1000);
   return date;
 };
+
+// количество дней в текущем месяце (исправлен баг с Safari)
+Date.prototype.daysInMonth = function(): number {
+    return 33 - new Date(this.getFullYear(), this.getMonth(), 33).getDate();
+};
+
